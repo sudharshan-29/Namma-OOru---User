@@ -1,0 +1,6 @@
+{
+  "name": "CivicProof Map Module",
+  "description": "Reusable GIS map module for CivicProof, a Chennai civic issue reporting app.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

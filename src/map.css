@@ -1,0 +1,1772 @@
+/* NAMMA OORU Map Module - Custom MapLibre UI Styles & Glassmorphism Design System */
+
+:root {
+  --glass-bg-primary: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.52) 45%, rgba(255, 255, 255, 0.68) 100%);
+  --glass-bg-card: linear-gradient(140deg, rgba(255, 255, 255, 0.84) 0%, rgba(255, 255, 255, 0.56) 50%, rgba(255, 255, 255, 0.72) 100%);
+  --glass-bg-card-hover: linear-gradient(140deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.72) 100%);
+  --glass-bg-modal: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.72) 40%, rgba(255, 255, 255, 0.82) 100%);
+  --glass-bg-input: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.5) 100%);
+  --glass-bg-input-focus: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.82) 100%);
+  --glass-bg-dark: linear-gradient(135deg, rgba(14, 25, 48, 0.88) 0%, rgba(8, 16, 34, 0.84) 50%, rgba(12, 22, 44, 0.9) 100%);
+  --glass-bg-dark-overlay: rgba(8, 15, 30, 0.68);
+  
+  --glass-border: 1px solid rgba(255, 255, 255, 0.82);
+  --glass-border-light: 1px solid rgba(255, 255, 255, 0.9);
+  --glass-border-subtle: 1px solid rgba(226, 232, 240, 0.75);
+  --glass-border-dark: 1px solid rgba(255, 255, 255, 0.18);
+  --glass-border-accent: 1px solid rgba(16, 185, 129, 0.55);
+  --glass-border-cyan: 1px solid rgba(0, 229, 255, 0.45);
+
+  --glass-blur-sm: blur(14px) saturate(180%);
+  --glass-blur-md: blur(24px) saturate(200%) contrast(104%);
+  --glass-blur-lg: blur(32px) saturate(210%) contrast(105%);
+
+  --glass-shadow-sm: 0 4px 16px rgba(20, 40, 70, 0.08), inset 0 1.5px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+  --glass-shadow-md: 0 14px 40px rgba(15, 30, 70, 0.14), 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1.5px 0 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 0 rgba(255, 255, 255, 0.45);
+  --glass-shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.22), inset 0 1.5px 0 rgba(255, 255, 255, 0.95);
+  --glass-shadow-dark: 0 28px 70px rgba(0, 0, 0, 0.65), inset 0 1.5px 0 rgba(255, 255, 255, 0.25);
+
+  --glass-radius-sm: 10px;
+  --glass-radius-md: 14px;
+  --glass-radius-lg: 18px;
+  --glass-radius-xl: 22px;
+  --glass-radius-pill: 9999px;
+
+  --color-primary-teal: #0d9488;
+  --color-primary-emerald: #10b981;
+  --color-accent-cyan: #06b6d4;
+  --color-dark-navy: #0f172a;
+}
+
+/* Reusable Glassmorphism Utility Classes */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.52) 45%, rgba(255, 255, 255, 0.68) 100%);
+  backdrop-filter: blur(24px) saturate(200%) contrast(104%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%) contrast(104%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(15, 30, 70, 0.14), 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1.5px 0 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 0 rgba(255, 255, 255, 0.4), inset 1px 0 0 0 rgba(255, 255, 255, 0.5);
+}
+
+.glass-panel-dark {
+  background: linear-gradient(135deg, rgba(14, 25, 48, 0.88) 0%, rgba(8, 16, 34, 0.84) 50%, rgba(12, 22, 44, 0.9) 100%);
+  backdrop-filter: blur(32px) saturate(200%) contrast(105%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%) contrast(105%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65), inset 0 1.5px 0 rgba(255, 255, 255, 0.25);
+}
+
+.glass-button {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.52) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(20, 40, 70, 0.08), inset 0 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.glass-button:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.7) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(20, 40, 70, 0.16), inset 0 1.5px 0 rgba(255, 255, 255, 1);
+}
+
+.glass-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(20, 40, 70, 0.1);
+}
+
+.glass-button-primary {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.92) 0%, rgba(5, 150, 105, 0.84) 100%);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 14px;
+  color: #ffffff;
+  box-shadow: 0 6px 22px rgba(16, 185, 129, 0.4), inset 0 1.5px 0 rgba(255, 255, 255, 0.8), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.glass-button-primary:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 1) 0%, rgba(5, 150, 105, 0.95) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.52), inset 0 1.5px 0 rgba(255, 255, 255, 0.95);
+}
+
+.glass-button-primary:active {
+  transform: translateY(0);
+}
+
+.civicproof-map-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  outline: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Glassmorphism Map Navigation Controls */
+.civicproof-map-container .maplibregl-ctrl-group {
+  background: linear-gradient(135deg, rgba(235, 246, 255, 0.82) 0%, rgba(215, 236, 255, 0.7) 100%) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 10px 28px rgba(20, 50, 100, 0.12), inset 0 1.5px 0 rgba(255, 255, 255, 1) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
+  overflow: hidden;
+  margin-right: 16px !important;
+  margin-bottom: 24px !important;
+}
+
+.civicproof-map-container .maplibregl-ctrl-group button {
+  width: 38px !important;
+  height: 38px !important;
+  border-bottom: 1px solid rgba(210, 230, 250, 0.7) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  transition: all 0.2s ease !important;
+  color: #1e3a5f !important;
+}
+
+.civicproof-map-container .maplibregl-ctrl-group button:last-child {
+  border-bottom: none !important;
+}
+
+.civicproof-map-container .maplibregl-ctrl-group button:hover {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #0284c7 !important;
+  transform: scale(1.05);
+}
+
+/* Frosted glass attribution pill */
+.civicproof-map-container .maplibregl-ctrl-attrib {
+  background: linear-gradient(135deg, rgba(235, 246, 255, 0.82) 0%, rgba(215, 236, 255, 0.7) 100%) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  padding: 5px 14px !important;
+  border-radius: 9999px !important;
+  font-size: 11px !important;
+  color: #1e3a5f !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 8px 24px rgba(20, 50, 100, 0.1), inset 0 1.5px 0 rgba(255, 255, 255, 1) !important;
+  margin-left: 14px !important;
+  margin-bottom: 14px !important;
+}
+
+.civicproof-map-container .maplibregl-ctrl-attrib a {
+  color: #0d9488 !important;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.civicproof-map-container .maplibregl-ctrl-attrib a:hover {
+  text-decoration: underline;
+}
+
+/* Custom Frosted Glass Complaint Popup Card */
+.maplibregl-popup.civicproof-map-popup,
+.civicproof-map-popup {
+  z-index: 500 !important;
+}
+
+.civicproof-map-popup .maplibregl-popup-content {
+  position: relative;
+  z-index: 501 !important;
+  padding: 0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.2), 0 4px 12px rgba(15, 23, 42, 0.08), inset 0 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.94) 100%) !important;
+  backdrop-filter: blur(28px) saturate(200%) contrast(104%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(104%) !important;
+  pointer-events: auto !important;
+}
+
+.civicproof-map-popup .maplibregl-popup-close-button {
+  padding: 6px 10px !important;
+  color: #64748b !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  border-radius: 0 20px 0 10px !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  border: none !important;
+  cursor: pointer;
+  transition: all 0.15s ease !important;
+  z-index: 502 !important;
+}
+
+.civicproof-map-popup .maplibregl-popup-close-button:hover {
+  color: #ef4444 !important;
+  background-color: rgba(254, 226, 226, 0.9) !important;
+}
+
+.civicproof-map-popup .maplibregl-popup-tip {
+  border-top-color: rgba(255, 255, 255, 0.98) !important;
+  z-index: 500 !important;
+}
+
+/* Hover Tooltip for Comparative Road Damage Risk (Frosted Glass) */
+.civicproof-hover-tooltip {
+  pointer-events: none !important;
+  z-index: 450 !important;
+}
+.civicproof-hover-tooltip .maplibregl-popup-content {
+  padding: 0 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16), 0 2px 8px rgba(15, 23, 42, 0.06), inset 0 1.5px 0 rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.92) 100%) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  pointer-events: none !important;
+}
+.civicproof-hover-tooltip .maplibregl-popup-tip {
+  border-top-color: rgba(255, 255, 255, 0.96) !important;
+  pointer-events: none !important;
+}
+
+/* =========================================================
+   STAGE 3: CITIZEN COMPLAINT SUBMISSION MODAL (FROSTED GLASS)
+   ========================================================= */
+
+.civicproof-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2500 !important;
+  background-color: rgba(8, 16, 34, 0.62);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.18s ease-out forwards;
+}
+
+.civicproof-modal-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.72) 40%, rgba(255, 255, 255, 0.82) 100%);
+  backdrop-filter: blur(32px) saturate(210%) contrast(104%);
+  -webkit-backdrop-filter: blur(32px) saturate(210%) contrast(104%);
+  border-radius: 22px;
+  width: 100%;
+  max-width: 490px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.28), 0 8px 24px rgba(15, 23, 42, 0.12), inset 0 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  animation: scaleUp 0.18s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, rgba(12, 36, 54, 0.95) 0%, rgba(6, 18, 30, 0.9) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(0, 229, 255, 0.45);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 229, 255, 0.3), inset 0 1px rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-icon:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 22px rgba(0, 229, 255, 0.45), inset 0 1px rgba(255, 255, 255, 0.4);
+}
+
+.header-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.8)) drop-shadow(0 0 16px rgba(0, 229, 255, 0.4));
+}
+
+.modal-title {
+  margin: 0;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.modal-subtitle {
+  margin: 2px 0 0 0;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.btn-close {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  font-size: 20px;
+  line-height: 1;
+  color: #64748b;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.alert-banner {
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.alert-error {
+  background: rgba(254, 242, 242, 0.8);
+  border: 1px solid rgba(254, 202, 202, 0.9);
+  color: #b91c1c;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.08);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.required {
+  color: #ef4444;
+}
+
+.optional {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+.char-counter {
+  font-size: 11px;
+  font-family: monospace;
+  color: #64748b;
+}
+
+/* Category Grid with Frosted Glass Buttons */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cat-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.48) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  padding: 10px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: inherit;
+  box-shadow: 0 4px 12px rgba(20, 40, 70, 0.06), inset 0 1.5px 0 rgba(255, 255, 255, 0.95);
+}
+
+.cat-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 100%);
+  border-color: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(20, 40, 70, 0.12), inset 0 1.5px 0 rgba(255, 255, 255, 1);
+}
+
+.cat-card.active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.22) 0%, rgba(16, 185, 129, 0.12) 100%);
+  border-color: rgba(16, 185, 129, 0.75);
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.3), inset 0 0 10px rgba(16, 185, 129, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+}
+
+.cat-icon {
+  font-size: 18px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
+}
+
+.cat-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: #334155;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.cat-card.active .cat-name {
+  color: #047857;
+  font-weight: 700;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Frosted Glass Textarea */
+.form-textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #0f172a;
+  resize: vertical;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.52) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  outline: none;
+  box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.05), inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.2s ease;
+}
+
+.form-textarea:focus {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.82) 100%);
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2), inset 0 1.5px 0 rgba(255, 255, 255, 1);
+}
+
+/* Frosted Dropzone */
+.dropzone {
+  border: 2px dashed rgba(16, 185, 129, 0.45);
+  border-radius: 14px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.42) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  text-align: center;
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+}
+
+.dropzone:hover {
+  border-color: #10b981;
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.8) 0%, rgba(209, 250, 229, 0.55) 100%);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15), inset 0 1.5px 0 rgba(255, 255, 255, 1);
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropzone-text {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.dropzone-subtext {
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* Photo Capture & Upload Action Buttons (Glassmorphic) */
+.photo-capture-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.btn-photo-capture {
+  flex: 1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.55) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(20, 40, 70, 0.08), inset 0 1.5px 0 rgba(255, 255, 255, 0.95);
+}
+
+.btn-photo-capture:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.72) 100%);
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 22px rgba(20, 40, 70, 0.14), inset 0 1.5px 0 rgba(255, 255, 255, 1);
+}
+
+.btn-photo-capture:hover {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.95);
+  color: #047857;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(20, 40, 70, 0.12);
+}
+
+.btn-photo-camera {
+  background: rgba(16, 185, 129, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #047857;
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.btn-photo-camera:hover {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: rgba(16, 185, 129, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.2);
+}
+
+.photo-hint-row {
+  margin-top: -2px;
+  margin-bottom: 2px;
+  line-height: 1.35;
+}
+
+.photo-hint-text {
+  font-size: 11px;
+  color: #64748b;
+  display: block;
+}
+
+.photo-preview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.photo-preview-wrap {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: #0f172a;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
+}
+
+.photo-preview-img {
+  width: 100%;
+  height: auto;
+  max-height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-preview-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.btn-photo-pill {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.btn-photo-pill:hover {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+.btn-photo-pill.danger {
+  color: #dc2626;
+  border-color: rgba(252, 165, 165, 0.6);
+  background: rgba(254, 242, 242, 0.8);
+}
+
+.btn-photo-pill.danger:hover {
+  background: rgba(254, 226, 226, 0.95);
+}
+
+/* Photo Geotag Status Card */
+.photo-geotag-card {
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.photo-geotag-card.success {
+  background: rgba(240, 253, 244, 0.85);
+  border: 1px solid rgba(187, 247, 208, 0.9);
+  color: #166534;
+  box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08);
+}
+
+.photo-geotag-card.info {
+  background: rgba(248, 250, 252, 0.85);
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  color: #334155;
+}
+
+.photo-geotag-card.warning {
+  background: rgba(255, 251, 235, 0.85);
+  border: 1px solid rgba(253, 230, 138, 0.9);
+  color: #92400e;
+}
+
+.photo-geotag-card.loading {
+  background: rgba(240, 249, 255, 0.85);
+  border: 1px solid rgba(186, 230, 253, 0.9);
+  color: #0369a1;
+}
+
+.geotag-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.geotag-source-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.geotag-source-tag.camera {
+  background: rgba(220, 252, 231, 0.9);
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.geotag-source-tag.exif {
+  background: rgba(224, 242, 254, 0.9);
+  color: #0369a1;
+  border: 1px solid #7dd3fc;
+}
+
+.geotag-source-tag.upload {
+  background: rgba(254, 243, 199, 0.9);
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+.geotag-source-tag.map {
+  background: rgba(241, 245, 249, 0.9);
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.geotag-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.btn-geotag-action {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+}
+
+.btn-geotag-action:hover {
+  background: #ffffff;
+}
+
+.privacy-notice {
+  font-size: 10px;
+  color: #64748b;
+  line-height: 1.35;
+  margin-top: 4px;
+}
+
+/* Location Picker Box (Frosted Glass) */
+.location-picker-box {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.location-status-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.location-text.muted {
+  color: #64748b;
+}
+
+.location-text.active {
+  color: #047857;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.location-text.road-snapped {
+  color: #047857;
+  font-weight: 700;
+}
+
+.road-snap-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 11px;
+}
+
+.snap-badge {
+  background: rgba(220, 252, 231, 0.9);
+  color: #15803d;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  border: 1px solid #bbf7d0;
+  white-space: nowrap;
+}
+
+.snap-badge.off-road {
+  background: rgba(254, 243, 199, 0.9);
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.snap-road-text {
+  color: #475569;
+  font-weight: 500;
+}
+
+.location-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-loc {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 6px 11px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 6px rgba(20, 40, 70, 0.05);
+  transition: all 0.15s ease;
+}
+
+.btn-loc:hover {
+  background: #ffffff;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+
+.btn-loc-map {
+  color: #047857;
+  border-color: rgba(167, 243, 208, 0.8);
+  background: rgba(236, 253, 245, 0.85);
+}
+
+.btn-loc-map:hover {
+  background: rgba(209, 250, 229, 0.95);
+  border-color: #059669;
+}
+
+/* Location text and source badge */
+.location-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.location-source-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.location-source-badge.gps {
+  background: rgba(220, 252, 231, 0.9);
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.location-source-badge.manual {
+  background: rgba(241, 245, 249, 0.9);
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.location-source-badge.exif {
+  background: rgba(224, 242, 254, 0.9);
+  color: #0369a1;
+  border: 1px solid #7dd3fc;
+}
+
+.location-source-badge.upload {
+  background: rgba(254, 243, 199, 0.9);
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+/* GPS Diagnostic Troubleshooting Box */
+.gps-diagnostic-card {
+  margin-top: 8px;
+  background: rgba(255, 251, 235, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid #fde68a;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: #92400e;
+}
+
+.gps-diag-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 12px;
+  color: #78350f;
+  margin-bottom: 6px;
+}
+
+.btn-close-diag {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  color: #92400e;
+  padding: 0 4px;
+}
+
+.gps-diag-body {
+  font-size: 11.5px;
+  color: #78350f;
+}
+
+.gps-diag-body .diag-p {
+  margin: 4px 0;
+}
+
+.gps-diag-body code {
+  background: rgba(254, 243, 199, 0.9);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 10.5px;
+  border: 1px solid #fde68a;
+}
+
+.diag-callout.warning {
+  background: rgba(254, 243, 199, 0.8);
+  border-left: 3px solid #d97706;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin: 6px 0;
+  font-size: 11px;
+}
+
+.diag-steps {
+  margin-top: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.diag-steps ol,
+.diag-steps ul {
+  margin: 4px 0 0 16px;
+  padding: 0;
+}
+
+.diag-steps li {
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+
+.gps-diag-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-diag-action {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #d97706;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #92400e;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.15s ease;
+}
+
+.btn-diag-action:hover {
+  background: #fef3c7;
+  transform: translateY(-1px);
+}
+
+.btn-diag-action.primary {
+  background: #d97706;
+  color: #ffffff;
+  border-color: #b45309;
+}
+
+.btn-diag-action.primary:hover {
+  background: #b45309;
+}
+
+.btn-diag-action.outline {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2563eb;
+  border-color: #93c5fd;
+}
+
+.btn-diag-action.outline:hover {
+  background: #eff6ff;
+}
+
+/* Checkbox */
+.form-group-checkbox {
+  padding: 10px 0;
+  border-top: 1px solid rgba(241, 245, 249, 0.8);
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkbox-container input {
+  margin-top: 2px;
+  accent-color: #10b981;
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: #1e293b;
+}
+
+.checkbox-desc {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* Modal Actions (Frosted Glass Buttons) */
+.modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(20, 40, 70, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(20, 40, 70, 0.12);
+}
+
+.btn-primary {
+  background: rgba(16, 185, 129, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 12px;
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover {
+  background: rgba(16, 185, 129, 0.98);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Location Pick Banner (Frosted Dark Glass) */
+.location-pick-banner {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1200;
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 10px 20px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDown {
+  from { transform: translate(-50%, -20px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.pick-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.pick-pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.35);
+  animation: pulse-dot 2s infinite;
+}
+
+.btn-cancel-pick {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel-pick:hover {
+  background: rgba(239, 68, 68, 0.3);
+  border-color: rgba(239, 68, 68, 0.6);
+  color: #ffffff;
+  transform: scale(1.03);
+}
+
+/* Toast Notification (Frosted Emerald Glass) */
+.civicproof-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2000;
+  background: rgba(16, 185, 129, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 14px 20px;
+  box-shadow: 0 16px 40px rgba(16, 185, 129, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  max-width: 380px;
+  animation: slideUpToast 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpToast {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.civicproof-toast.fade-out {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.3s ease;
+}
+
+.toast-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.toast-content p {
+  margin: 2px 0 0 0;
+  font-size: 11px;
+  color: #d1fae5;
+}
+
+.toast-icon {
+  font-size: 16px;
+}
+
+/* In-App Camera Viewfinder */
+.camera-viewfinder-box {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  background: #090d16;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+.camera-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.camera-loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 13, 22, 0.88);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 5;
+}
+.camera-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #10b981;
+  border-radius: 50%;
+  animation: civic-cam-spin 0.8s linear infinite;
+}
+@keyframes civic-cam-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Framing Reticle Overlay */
+.camera-viewfinder-reticle {
+  position: absolute;
+  inset: 16px;
+  pointer-events: none;
+  z-index: 2;
+}
+.reticle-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(255, 255, 255, 0.65);
+}
+.reticle-corner.top-left {
+  top: 0; left: 0;
+  border-top: 2.5px solid;
+  border-left: 2.5px solid;
+  border-top-left-radius: 4px;
+}
+.reticle-corner.top-right {
+  top: 0; right: 0;
+  border-top: 2.5px solid;
+  border-right: 2.5px solid;
+  border-top-right-radius: 4px;
+}
+.reticle-corner.bottom-left {
+  bottom: 0; left: 0;
+  border-bottom: 2.5px solid;
+  border-left: 2.5px solid;
+  border-bottom-left-radius: 4px;
+}
+.reticle-corner.bottom-right {
+  bottom: 0; right: 0;
+  border-bottom: 2.5px solid;
+  border-right: 2.5px solid;
+  border-bottom-right-radius: 4px;
+}
+.reticle-crosshair {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 12px; height: 12px;
+  transform: translate(-50%, -50%);
+  opacity: 0.4;
+}
+.reticle-crosshair::before,
+.reticle-crosshair::after {
+  content: '';
+  position: absolute;
+  background: #ffffff;
+}
+.reticle-crosshair::before {
+  top: 5px; left: 0; right: 0; height: 1.5px;
+}
+.reticle-crosshair::after {
+  left: 5px; top: 0; bottom: 0; width: 1.5px;
+}
+
+/* Top bar inside viewfinder */
+.camera-top-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+  z-index: 3;
+}
+.camera-mode-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f8fafc;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+}
+.camera-live-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #ef4444;
+  box-shadow: 0 0 6px #ef4444;
+  animation: civic-pulse 1.5s infinite;
+}
+@keyframes civic-pulse {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+.btn-camera-close {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  transition: all 0.15s ease;
+}
+.btn-camera-close:hover {
+  background: rgba(239, 68, 68, 0.8);
+  border-color: #ef4444;
+}
+
+/* Bottom controls overlay */
+.camera-overlay-controls {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+  z-index: 3;
+}
+.camera-ctrl-slot {
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-camera-capture {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3.5px solid #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform 0.1s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.btn-camera-capture:hover {
+  transform: scale(1.05);
+}
+.btn-camera-capture:active {
+  transform: scale(0.95);
+}
+.capture-inner-ring {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: transform 0.1s ease;
+}
+.btn-camera-capture:active .capture-inner-ring {
+  transform: scale(0.85);
+  background: #f1f5f9;
+}
+
+.btn-camera-switch {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+.btn-camera-switch:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(45deg);
+}
+
+/* Shutter flash effect */
+.camera-shutter-flash {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 6;
+  transition: opacity 0.25s ease-out;
+}
+.camera-shutter-flash.flash-active {
+  opacity: 0.95;
+}
+
+/* Camera Error Card */
+.camera-error-card {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.08);
+}
+.cam-err-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.cam-err-icon {
+  font-size: 16px;
+}
+.cam-err-title {
+  font-weight: 700;
+  color: #991b1b;
+  font-size: 13px;
+  flex: 1;
+}
+.cam-err-body {
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #7f1d1d;
+}
+.cam-err-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   REAL-TIME ANIMATED RIPPLE WAVE EFFECT (RADAR/SONAR PULSE)
+   Concentric pulsing waves around complaint location markers
+   ========================================================= */
+
+/* All MapLibre HTML Markers: Keep strictly on map canvas layer below popups, modals, and floating panels */
+.maplibregl-marker {
+  z-index: 5 !important;
+}
+
+.civicproof-ripple-marker {
+  position: relative;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  user-select: none;
+  contain: layout style;
+  z-index: 2;
+  /* Default variables matching user reference photo: translucent light-red/pink */
+  --marker-core-color: #D71920;
+  --ripple-fill-inner: rgba(255, 50, 70, 0.28);
+  --ripple-fill-outer: rgba(255, 50, 70, 0.08);
+  --ripple-border: rgba(255, 50, 70, 0.46);
+  --ripple-glow: rgba(255, 50, 70, 0.35);
+}
+
+/* Concentric circular ripple wave layer */
+.civicproof-ripple-marker .ripple-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 84px;
+  height: 84px;
+  margin-top: -42px;
+  margin-left: -42px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    var(--ripple-fill-inner, rgba(255, 50, 70, 0.28)) 25%,
+    var(--ripple-fill-outer, rgba(255, 50, 70, 0.08)) 68%,
+    transparent 100%
+  );
+  border: 1.5px solid var(--ripple-border, rgba(255, 50, 70, 0.46));
+  box-shadow: 0 0 10px var(--ripple-glow, rgba(255, 50, 70, 0.35));
+  box-sizing: border-box;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: civic-radar-ripple 3.2s cubic-bezier(0.18, 0.55, 0.45, 1) infinite;
+}
+
+/* Staggered animation delays for 4 concentric circular ripple waves */
+.civicproof-ripple-marker .ripple-wave.wave-1 {
+  animation-delay: 0s;
+}
+.civicproof-ripple-marker .ripple-wave.wave-2 {
+  animation-delay: 0.8s;
+}
+.civicproof-ripple-marker .ripple-wave.wave-3 {
+  animation-delay: 1.6s;
+}
+.civicproof-ripple-marker .ripple-wave.wave-4 {
+  animation-delay: 2.4s;
+}
+
+/* Keyframes: Smooth outward expansion with progressive fade */
+@keyframes civic-radar-ripple {
+  0% {
+    transform: scale(0.22);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.88;
+  }
+  50% {
+    opacity: 0.48;
+  }
+  80% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+}
+
+/* Solid Center Location Marker (Fixed in center above animated waves) */
+.civicproof-ripple-marker .ripple-core {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  margin-top: -6.5px;
+  margin-left: -6.5px;
+  border-radius: 50%;
+  background-color: var(--marker-core-color, #EF4444);
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.35);
+  box-sizing: border-box;
+  z-index: 3;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease;
+}
+
+.civicproof-ripple-marker .ripple-core:hover {
+  transform: scale(1.35);
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.5);
+  z-index: 5;
+}
+
+.civicproof-ripple-marker .ripple-core:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 3px;
+}
+
+/* Distinct styling for unmatched point-based density complaints */
+.civicproof-ripple-marker.is-fallback .ripple-core {
+  border: 2px dashed #94A3B8;
+  box-shadow: 0 0 0 1.5px #334155, 0 2px 6px rgba(15, 23, 42, 0.4);
+}
+.civicproof-ripple-marker.is-fallback .ripple-wave {
+  border-style: dashed;
+  border-width: 1px;
+}
+
+/* =========================================================================
+   Active-Work Marker (▲ Tiny, clearly visible yellow triangular marker)
+   Strictly mapped only to complaints actively undergoing municipal work
+   ========================================================================= */
+.civicproof-active-work-marker {
+  position: relative;
+  width: 0;
+  height: 0;
+  pointer-events: auto;
+  user-select: none;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.civicproof-active-work-marker:hover {
+  z-index: 6;
+}
+
+.civicproof-active-work-marker .active-work-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  margin-top: -18px;
+  margin-left: -18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.45) 0%, rgba(251, 191, 36, 0.12) 65%, transparent 100%);
+  border: 1px solid rgba(251, 191, 36, 0.55);
+  pointer-events: none;
+  animation: active-work-pulse-anim 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes active-work-pulse-anim {
+  0% {
+    transform: scale(0.45);
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.civicproof-active-work-marker .active-work-triangle-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: -11px;
+  margin-left: -11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 2px 5px rgba(15, 23, 42, 0.45));
+}
+
+.civicproof-active-work-marker:hover .active-work-triangle-wrap,
+.civicproof-active-work-marker:focus-visible .active-work-triangle-wrap {
+  transform: scale(1.28) translateY(-2px);
+  filter: drop-shadow(0 4px 10px rgba(251, 191, 36, 0.6));
+}
+
+.civicproof-active-work-marker:focus-visible {
+  outline: 2px solid #FBBF24;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .civicproof-ripple-marker .ripple-wave,
+  .civicproof-active-work-marker .active-work-pulse {
+    animation: none !important;
+    opacity: 0.22 !important;
+    transform: scale(0.65) !important;
+  }
+}
+
+

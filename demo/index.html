@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NAMMA OORU Map Module — Interactive Test Harness</title>
+    <link rel="icon" type="image/png" href="/lighthouse-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/map.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: #0d182e;
+        color: #0f172a;
+        overflow: hidden;
+      }
+      #app-shell {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+      }
+      header {
+        height: 64px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.82) 0%,
+          rgba(255, 255, 255, 0.55) 45%,
+          rgba(255, 255, 255, 0.72) 100%
+        );
+        backdrop-filter: blur(28px) saturate(200%);
+        -webkit-backdrop-filter: blur(28px) saturate(200%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow:
+          0 8px 32px rgba(15, 23, 42, 0.08),
+          inset 0 1.5px 0 rgba(255, 255, 255, 0.95),
+          inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        z-index: 20;
+        flex-shrink: 0;
+        gap: 12px;
+      }
+      .brand-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+      .brand-badge {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: #ffffff;
+        font-family: 'Outfit', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 4px 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      }
+      .brand-title {
+        font-family: 'Outfit', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: #0f172a;
+        letter-spacing: -0.01em;
+      }
+      .status-label {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 11.5px;
+        font-weight: 600;
+        color: #334155;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.48) 100%);
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        padding: 5px 14px;
+        border-radius: 9999px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 320px;
+        box-shadow:
+          0 2px 8px rgba(0, 0, 0, 0.04),
+          inset 0 1.5px 0 rgba(255, 255, 255, 0.95),
+          inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+      }
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.78) 0%,
+          rgba(255, 255, 255, 0.52) 100%
+        );
+        backdrop-filter: blur(18px) saturate(180%);
+        -webkit-backdrop-filter: blur(18px) saturate(180%);
+        color: #1e293b;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 12px;
+        padding: 6px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        box-shadow:
+          0 4px 14px rgba(20, 40, 70, 0.08),
+          inset 0 1.5px 0 rgba(255, 255, 255, 0.95),
+          inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .btn:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.92) 0%,
+          rgba(255, 255, 255, 0.72) 100%
+        );
+        color: #0f172a;
+        transform: translateY(-2px);
+        box-shadow:
+          0 8px 24px rgba(20, 40, 70, 0.15),
+          inset 0 1.5px 0 rgba(255, 255, 255, 1);
+      }
+      .btn:active {
+        transform: translateY(0);
+      }
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 0.92) 0%,
+          rgba(5, 150, 105, 0.84) 100%
+        );
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        box-shadow:
+          0 6px 22px rgba(16, 185, 129, 0.4),
+          inset 0 1.5px 0 rgba(255, 255, 255, 0.8),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+      }
+      .btn-primary:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 1) 0%,
+          rgba(5, 150, 105, 0.95) 100%
+        );
+        color: #ffffff;
+        box-shadow:
+          0 8px 28px rgba(16, 185, 129, 0.5),
+          inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+      }
+      .btn-success {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.22) 0%, rgba(16, 185, 129, 0.12) 100%);
+        color: #047857;
+        border-color: rgba(16, 185, 129, 0.45);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12), inset 0 1.5px 0 rgba(255, 255, 255, 0.8);
+      }
+      .btn-success:hover {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.32) 0%, rgba(16, 185, 129, 0.18) 100%);
+        color: #065f46;
+        box-shadow: 0 6px 18px rgba(16, 185, 129, 0.2);
+      }
+      .btn-warning {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(245, 158, 11, 0.12) 100%);
+        color: #b45309;
+        border-color: rgba(245, 158, 11, 0.45);
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.12), inset 0 1.5px 0 rgba(255, 255, 255, 0.8);
+      }
+      .btn-warning:hover {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.32) 0%, rgba(245, 158, 11, 0.18) 100%);
+        color: #92400e;
+        box-shadow: 0 6px 18px rgba(245, 158, 11, 0.2);
+      }
+      .btn-danger {
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.22) 0%, rgba(239, 68, 68, 0.12) 100%);
+        color: #b91c1c;
+        border-color: rgba(239, 68, 68, 0.45);
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.12), inset 0 1.5px 0 rgba(255, 255, 255, 0.8);
+      }
+      .btn-danger:hover {
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.32) 0%, rgba(239, 68, 68, 0.18) 100%);
+        color: #991b1b;
+        box-shadow: 0 6px 18px rgba(239, 68, 68, 0.2);
+      }
+      #map-container {
+        flex: 1;
+        width: 100%;
+        height: calc(100% - 64px);
+        position: relative;
+        background-color: #0d182e;
+      }
+      .disclaimer-banner {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        z-index: 10;
+        background: linear-gradient(135deg, rgba(254, 243, 199, 0.9) 0%, rgba(254, 243, 199, 0.65) 100%);
+        backdrop-filter: blur(18px) saturate(180%);
+        -webkit-backdrop-filter: blur(18px) saturate(180%);
+        border: 1px solid rgba(252, 211, 77, 0.85);
+        color: #92400e;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow:
+          0 6px 20px rgba(146, 64, 14, 0.14),
+          inset 0 1.5px 0 rgba(255, 255, 255, 0.95);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-shell">
+      <header>
+        <div class="brand-box">
+          <img src="/lighthouse-logo.png" alt="NAMMA OORU Logo" style="width: 28px; height: 28px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.85)); display: block;" />
+          <span class="brand-badge">NAMMA OORU</span>
+          <span class="brand-title">Harness</span>
+          <span id="status-text" class="status-label">Initializing...</span>
+        </div>
+        <div class="controls">
+          <button id="btn-open-modal" class="btn btn-primary" title="Open citizen report modal">＋ Report Issue Modal</button>
+          <button id="btn-add" class="btn btn-success" title="Quick programmatic add">+ Quick Add</button>
+          <button id="btn-resolve" class="btn btn-warning" title="Resolve the first open complaint">Resolve First</button>
+          <button id="btn-remove" class="btn btn-danger" title="Remove the last complaint">Delete Last</button>
+          <button id="btn-refresh" class="btn" title="Reset to original demo seed">Reset Seed</button>
+          <button id="btn-close-popup" class="btn" title="Close active popup">Close Popup</button>
+          <button id="btn-resize" class="btn" title="Call map.resize()">Resize</button>
+          <a href="/" class="btn">&larr; Citizen View</a>
+        </div>
+      </header>
+      <div id="map-container">
+        <div class="disclaimer-banner">
+          <span>⚠️</span>
+          <span>FICTIONAL DEMO DATA — NOT A LIVE GOVERNMENT RECORD</span>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      import { createComplaintMap } from '../src/index.js';
+      import { initReportModal } from '../src/report-modal.js';
+
+      const statusEl = document.getElementById('status-text');
+      const container = document.getElementById('map-container');
+      const btnOpenModal = document.getElementById('btn-open-modal');
+      const btnAdd = document.getElementById('btn-add');
+      const btnResolve = document.getElementById('btn-resolve');
+      const btnRemove = document.getElementById('btn-remove');
+      const btnRefresh = document.getElementById('btn-refresh');
+      const btnClosePopup = document.getElementById('btn-close-popup');
+      const btnResize = document.getElementById('btn-resize');
+
+      let currentMap = null;
+
+      function updateCountDisplay() {
+        if (!currentMap) return;
+        const list = currentMap.getComplaints()?.features || [];
+        statusEl.textContent = `Active: ${list.length} street records (Click road lines to inspect)`;
+      }
+
+      function startMap() {
+        try {
+          statusEl.textContent = 'Initializing Chennai street complaints...';
+          currentMap = createComplaintMap(container, {
+            navControlPosition: 'bottom-right',
+            showCompass: false,
+          });
+          window.complaintMap = currentMap;
+
+          // Initialize Report Modal
+          const reportModal = initReportModal({
+            complaintMap: currentMap,
+            onSubmitted: (added) => {
+              updateCountDisplay();
+              const roadName = added?.properties?.roadName || 'Chennai Street';
+              statusEl.textContent = `Reported: #${added.properties.id} on ${roadName}`;
+            },
+          });
+          window.reportModal = reportModal;
+
+          btnOpenModal.addEventListener('click', () => {
+            reportModal.open();
+          });
+
+          currentMap.on('complaint:click', (e) => {
+            const roadName = e.properties.roadName || 'Chennai Street';
+            statusEl.textContent = `Selected: ${e.properties.id} [${e.properties.status.toUpperCase()}] · ${roadName}`;
+          });
+
+          currentMap.whenReady()
+            .then(() => {
+              updateCountDisplay();
+            })
+            .catch((err) => {
+              statusEl.textContent = `Error: ${err.message}`;
+              console.error('[NAMMA OORU Demo] Error:', err);
+            });
+        } catch (err) {
+          statusEl.textContent = `Init failed: ${err.message}`;
+          console.error('[NAMMA OORU Demo] Error:', err);
+        }
+      }
+
+      // Quick programmatic add (snaps to a Chennai street location)
+      btnAdd.addEventListener('click', () => {
+        if (!currentMap || currentMap.isDestroyed()) return;
+        // Plausible Chennai road locations
+        const sampleStreets = [
+          { name: 'Pantheon Road, Egmore', coords: [80.2580, 13.0720] },
+          { name: 'Cathedral Road, Gopalapuram', coords: [80.2550, 13.0470] },
+          { name: 'Poonamallee High Road, Kilpauk', coords: [80.2460, 13.0805] },
+          { name: '100 Feet Road, Vadapalani', coords: [80.2080, 13.0560] },
+          { name: 'Santhome High Road, Mylapore', coords: [80.2780, 13.0310] },
+        ];
+        const sample = sampleStreets[Math.floor(Math.random() * sampleStreets.length)];
+        const categories = ['road_damage', 'waste_disposal', 'water_leakage', 'street_light', 'other'];
+        const randomCat = categories[Math.floor(Math.random() * categories.length)];
+        const count = (currentMap.getComplaints()?.features?.length || 0) + 1;
+
+        const newRecord = {
+          type: 'Feature',
+          geometry: { type: 'Point', coordinates: sample.coords },
+          properties: {
+            id: `DEMO-2026-${String(count).padStart(4, '0')}`,
+            category: randomCat,
+            status: 'open',
+            roadName: sample.name,
+            description: `Quick test issue reported along ${sample.name}.`,
+            createdAt: new Date().toISOString(),
+            demo: true,
+          },
+        };
+
+        currentMap.addComplaint(newRecord);
+        statusEl.textContent = `Added: ${newRecord.properties.id} on ${sample.name}`;
+      });
+
+      // Resolve the first open complaint
+      btnResolve.addEventListener('click', () => {
+        if (!currentMap || currentMap.isDestroyed()) return;
+        const list = currentMap.getComplaints()?.features || [];
+        const openOne = list.find((f) => f.properties.status === 'open');
+        if (openOne) {
+          currentMap.updateComplaint(openOne.properties.id, { status: 'resolved' });
+          statusEl.textContent = `Updated: ${openOne.properties.id} marked as RESOLVED (Green line)`;
+        } else {
+          statusEl.textContent = 'No open complaints found to resolve';
+        }
+      });
+
+      // Remove the last complaint
+      btnRemove.addEventListener('click', () => {
+        if (!currentMap || currentMap.isDestroyed()) return;
+        const list = currentMap.getComplaints()?.features || [];
+        if (list.length > 0) {
+          const lastId = list[list.length - 1].properties.id;
+          currentMap.removeComplaint(lastId);
+          statusEl.textContent = `Removed: ${lastId} · Remaining: ${list.length - 1}`;
+        }
+      });
+
+      // Reset to seed
+      btnRefresh.addEventListener('click', async () => {
+        if (!currentMap || currentMap.isDestroyed()) return;
+        await currentMap.refresh();
+        updateCountDisplay();
+      });
+
+      btnClosePopup.addEventListener('click', () => {
+        if (currentMap && !currentMap.isDestroyed()) {
+          currentMap.closePopup();
+        }
+      });
+
+      btnResize.addEventListener('click', () => {
+        if (currentMap && !currentMap.isDestroyed()) {
+          currentMap.resize();
+          statusEl.textContent = 'resize() executed';
+        }
+      });
+
+      startMap();
+    </script>
+  </body>
+</html>
